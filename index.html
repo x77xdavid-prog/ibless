@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이블레스 | 스스로 자라는 영어 습관</title>
+  <meta name="description" content="아이블레스(iBless)는 유아·초등·중등·고등을 위한 수준별 1:1 맞춤 영어 학습 브랜드입니다. 정확한 레벨 진단과 4대 영역 통합 트레이닝으로 스스로 자라는 영어 습관을 만듭니다." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- JS 활성 표시 (리빌 애니메이션 게이트, 깜빡임 방지) -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <!-- ============================= 헤더 ============================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="아이블레스 홈">
+        <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="31" height="31" rx="10" fill="var(--color-primary)" />
+          <circle cx="12" cy="10.5" r="2.6" fill="#fff" />
+          <rect x="9.4" y="15" width="5.2" height="11.5" rx="2.6" fill="#fff" />
+          <path d="M20 26.5V11.5c3.6 0 6.4 2.6 6.4 7.4S23.6 26.5 20 26.5Z" fill="#fff" opacity=".92" />
+        </svg>
+        <span class="brand-name">iBless<em>아이블레스</em></span>
+      </a>
+
+      <nav class="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="#about">아이블레스 소개</a></li>
+          <li><a href="#system">학습 프로그램</a></li>
+          <li><a href="#curriculum">교재 · 커리큘럼</a></li>
+          <li><a href="#evaluation">영어 인증평가</a></li>
+          <li><a href="#campus">캠퍼스 찾기</a></li>
+          <li><a href="#franchise">가맹 안내</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="link-quiet" href="#login">학습 사이트</a>
+        <a class="btn btn-primary btn-sm" href="#leveltest">무료 레벨테스트</a>
+        <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 모바일 내비게이션 -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴" hidden>
+      <ul>
+        <li><a href="#about">아이블레스 소개</a></li>
+        <li><a href="#system">학습 프로그램</a></li>
+        <li><a href="#curriculum">교재 · 커리큘럼</a></li>
+        <li><a href="#evaluation">영어 인증평가</a></li>
+        <li><a href="#campus">캠퍼스 찾기</a></li>
+        <li><a href="#franchise">가맹 안내</a></li>
+      </ul>
+      <a class="btn btn-primary btn-block" href="#leveltest">무료 레벨테스트 신청</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================= 히어로 ============================= -->
+    <section class="hero" id="about" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+        <span class="grid-dots"></span>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="dot"></span>유아 · 초등 · 중등 · 고등 영어 전문</p>
+          <h1 id="hero-heading">
+            스스로 자라는 영어 습관,<br />
+            <strong>아이블레스</strong>
+          </h1>
+          <p class="hero-lead">
+            학년이 아니라 <b>실력에서 출발</b>합니다. 정확한 레벨 진단으로
+            우리 아이에게 꼭 맞는 <b>1:1 맞춤 학습</b>을 설계합니다.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#leveltest">
+              무료 레벨테스트
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#campus">가까운 캠퍼스 찾기</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <span class="hero-badge">오늘의 학습</span>
+              <span class="hero-streak">12일 연속 🔥</span>
+            </div>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" width="150" height="150">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#ffe6cc" stroke-width="14" />
+                <circle class="ring-progress" cx="60" cy="60" r="52" fill="none" stroke="var(--color-primary)" stroke-width="14" stroke-linecap="round" transform="rotate(-90 60 60)" />
+              </svg>
+              <div class="ring-label"><strong>78%</strong><span>오늘 목표</span></div>
+            </div>
+            <ul class="hero-skills">
+              <li><span>Listening</span><i style="--v:82%"></i></li>
+              <li><span>Reading</span><i style="--v:74%"></i></li>
+              <li><span>Speaking</span><i style="--v:65%"></i></li>
+              <li><span>Writing</span><i style="--v:70%"></i></li>
+            </ul>
+          </div>
+          <span class="float-chip chip-a">A+</span>
+          <span class="float-chip chip-b">Aa</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= 스탯 밴드 ============================= -->
+    <section class="stats" aria-label="아이블레스 학습 지표">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong class="count" data-target="400" data-suffix="+">0</strong>
+          <span>세분화된 레벨 단계</span>
+        </div>
+        <div class="stat reveal">
+          <strong class="count" data-target="4" data-suffix="대 영역">0</strong>
+          <span>듣기·읽기·말하기·쓰기 통합</span>
+        </div>
+        <div class="stat reveal">
+          <strong>1:1</strong>
+          <span>맞춤 코칭 & 피드백</span>
+        </div>
+        <div class="stat reveal">
+          <strong>온·오프</strong>
+          <span>블렌디드 러닝 시스템</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= 탭 섹션 ============================= -->
+    <section class="programs" aria-label="학습 프로그램">
+      <div class="container">
+        <div class="tabs" role="tablist" aria-label="프로그램 탭">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" data-tab="system" id="tab-system">수업 시스템</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="curriculum" id="tab-curriculum">커리큘럼</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="evaluation" id="tab-evaluation">영어 인증평가</button>
+        </div>
+      </div>
+
+      <!-- ---------- 패널 1 : 수업 시스템 ---------- -->
+      <div class="tab-panel is-active" data-panel="system" role="tabpanel" aria-labelledby="tab-system" id="system">
+        <div class="container">
+          <header class="section-head reveal">
+            <p class="section-lead">수준별 <strong>1:1 맞춤 학습</strong></p>
+            <p class="section-desc">
+              학년별 일괄 수업이 아닌, 학생의 현재 실력에서 출발하는 수준별 학습입니다.
+              늦게 시작한 학생도, 앞서가는 학생도 자신의 속도에 맞춰 부족한 부분을 채워 나갑니다.
+            </p>
+          </header>
+
+          <!-- 하루 영어 습관 -->
+          <div class="routine reveal">
+            <h3 class="routine-title">아이블레스의 <span>하루 영어 습관</span></h3>
+            <ol class="routine-steps">
+              <li><span class="num">01</span><p>오늘의 학습 목표 확인</p></li>
+              <li><span class="num">02</span><p>자기주도 학습 시작</p></li>
+              <li><span class="num">03</span><p>1:1 질문 &amp; 코칭</p></li>
+              <li><span class="num">04</span><p>부족한 영역 보충</p></li>
+              <li><span class="num">05</span><p>학습 점검 &amp; 피드백</p></li>
+              <li><span class="num">06</span><p>온라인 복습</p></li>
+            </ol>
+          </div>
+
+          <!-- 4대 영역 -->
+          <div class="skills-block reveal">
+            <div class="skills-copy">
+              <h4>영어의 4대 영역을<br />고르게 키웁니다</h4>
+              <p>
+                듣기·읽기·말하기·쓰기를 한 과정 안에서 균형 있게 학습하고,
+                선생님의 1:1 피드백을 받으며 <b>스스로 공부하는 힘</b>을 기릅니다.
+              </p>
+            </div>
+            <ul class="skills-meters">
+              <li><span class="skill-name">Listening</span><span class="meter"><i style="--v:88%"></i></span></li>
+              <li><span class="skill-name">Reading</span><span class="meter"><i style="--v:80%"></i></span></li>
+              <li><span class="skill-name">Speaking</span><span class="meter"><i style="--v:72%"></i></span></li>
+              <li><span class="skill-name">Writing</span><span class="meter"><i style="--v:76%"></i></span></li>
+            </ul>
+          </div>
+
+          <!-- 특징 카드 4개 -->
+          <ul class="feature-grid">
+            <li class="feature-card reveal">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <h5>1:1 맞춤 커리큘럼</h5>
+              <p>획일적인 진도에서 벗어나 학생 상태에 맞춘 능동적 학습을 진행합니다.</p>
+            </li>
+            <li class="feature-card reveal">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 5h16M4 12h16M4 19h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <h5>4대 영역 통합 트레이닝</h5>
+              <p>읽기·듣기·말하기·쓰기를 하나의 학습 과정 안에서 통합 트레이닝합니다.</p>
+            </li>
+            <li class="feature-card reveal">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path d="M9 12l2 2 4-4M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <h5>인증 평가 대비</h5>
+              <p>JET, TOEIC Bridge 등 공인 시험을 대비한 단계별 학습 목표와 로드맵을 제시합니다.</p>
+            </li>
+            <li class="feature-card reveal">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path d="M3 5h18v11H3zM8 21h8M12 16v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <h5>블렌디드 러닝</h5>
+              <p>오프라인 수업과 온라인 학습을 결합한 자기주도 학습 경험을 제공합니다.</p>
+            </li>
+          </ul>
+
+          <!-- 레벨링 서브탭 -->
+          <div class="leveling reveal">
+            <div class="subtabs" role="tablist" aria-label="레벨링 세부 탭">
+              <button class="subtab-btn is-active" role="tab" aria-selected="true" data-sub="lv1">정밀 레벨링 시스템</button>
+              <button class="subtab-btn" role="tab" aria-selected="false" data-sub="lv2">다양한 학습 콘텐츠</button>
+              <button class="subtab-btn" role="tab" aria-selected="false" data-sub="lv3">학습 앱 기능</button>
+            </div>
+
+            <div class="subpanel is-active" data-subpanel="lv1" role="tabpanel">
+              <div class="subpanel-copy">
+                <p class="kicker">체계적인 아이블레스의 수업 시스템 ①</p>
+                <h3>정확한 레벨 측정, 개인에게 꼭 맞는 교재 제공</h3>
+                <p>
+                  세분화된 레벨에서 학생의 위치를 진단 테스트와 공인 평가로 정확하고 과학적으로
+                  분석합니다. 객관적인 레벨링을 통해 지금 꼭 맞는 교재로 학습을 시작합니다.
+                </p>
+              </div>
+              <ol class="level-flow">
+                <li><span class="lv-step">1차 테스트</span><p>iBless Level Test</p></li>
+                <li class="arrow" aria-hidden="true">→</li>
+                <li><span class="lv-step">2차 테스트</span><p>JET 또는 TOEIC Bridge</p></li>
+                <li class="arrow" aria-hidden="true">→</li>
+                <li class="lv-result"><span class="lv-step">결과 합산</span><p>나에게 맞는 교재 배정!</p></li>
+              </ol>
+            </div>
+
+            <div class="subpanel" data-subpanel="lv2" role="tabpanel" hidden>
+              <div class="subpanel-copy">
+                <p class="kicker">체계적인 아이블레스의 수업 시스템 ②</p>
+                <h3>단계마다 풍부한 학습 콘텐츠</h3>
+                <p>단계별 학습 영상, 이러닝, 워크북 등 다양한 콘텐츠로 흥미를 잃지 않고 꾸준히 학습합니다.</p>
+              </div>
+              <ul class="content-grid">
+                <li><strong>학습 영상</strong><span>핵심 개념 강의</span></li>
+                <li><strong>이러닝</strong><span>퀴즈 &amp; 게임형 복습</span></li>
+                <li><strong>워크북</strong><span>단계별 쓰기 훈련</span></li>
+                <li><strong>리딩 라이브러리</strong><span>레벨별 원서 읽기</span></li>
+              </ul>
+            </div>
+
+            <div class="subpanel" data-subpanel="lv3" role="tabpanel" hidden>
+              <div class="subpanel-copy">
+                <p class="kicker">체계적인 아이블레스의 수업 시스템 ③</p>
+                <h3>앱으로 더 편리한 학습 관리</h3>
+                <p>모바일 앱으로 단어 학습, 복습 알림, 학습 리포트를 한곳에서 확인하고 관리합니다.</p>
+              </div>
+              <ul class="content-grid">
+                <li><strong>단어장</strong><span>오늘의 단어 &amp; 발음</span></li>
+                <li><strong>복습 알림</strong><span>잊을 때쯤 다시 학습</span></li>
+                <li><strong>학습 리포트</strong><span>주간 성취도 확인</span></li>
+                <li><strong>학부모 알림</strong><span>출결 &amp; 진도 안내</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 보상 시스템 (주황 섹션) -->
+        <div class="reward">
+          <div class="container reward-inner">
+            <div class="reward-copy reveal">
+              <p class="section-lead light">아이블레스만의 보상 시스템, <strong class="on-orange">iBless 포인트</strong></p>
+              <p class="reward-desc">
+                학습 성취에 따라 포인트를 적립하고, 적립한 포인트로 iBless 스토어에서
+                다양한 상품을 교환할 수 있습니다.
+              </p>
+              <a class="btn btn-white" href="#store">iBless 스토어 바로가기</a>
+            </div>
+            <ul class="reward-grid">
+              <li class="reward-item reveal"><span class="ph-thumb"></span><p>도서 상품권 3만원권</p><b>30,000 P</b></li>
+              <li class="reward-item reveal"><span class="ph-thumb"></span><p>문화상품권 3만원권</p><b>30,000 P</b></li>
+              <li class="reward-item reveal"><span class="ph-thumb"></span><p>편의점 기프티콘 5천원권</p><b>5,000 P</b></li>
+              <li class="reward-item reveal"><span class="ph-thumb"></span><p>영화 관람권 2인</p><b>24,000 P</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- 패널 2 : 커리큘럼 ---------- -->
+      <div class="tab-panel" data-panel="curriculum" role="tabpanel" aria-labelledby="tab-curriculum" id="curriculum" hidden>
+        <div class="curriculum">
+          <div class="container">
+            <header class="section-head reveal">
+              <p class="section-lead light">온·오프라인이 연계된 <strong class="on-sky">단계별 커리큘럼</strong></p>
+              <p class="section-desc light">
+                유아부터 고등까지, 단계별 목표에 맞춘 체계적인 학습 과정을 자체 개발하여 운영합니다.
+                실생활 영어로 자연스럽게 이어지는 수업을 진행합니다.
+              </p>
+            </header>
+
+            <ul class="stage-grid">
+              <li class="stage-card reveal">
+                <span class="stage-tag">STEP 1</span>
+                <h3>Phonics</h3>
+                <p class="stage-desc">알파벳과 기본 음가를 익히며 영어의 기초를 다지는 파닉스 학습 단계입니다.</p>
+                <dl class="stage-meta">
+                  <div><dt>학습 대상</dt><dd>유치원 ~ 초등 저학년</dd></div>
+                  <div><dt>학습 교재</dt><dd>Phonics Step</dd></div>
+                  <div><dt>대상 시험</dt><dd>Junior 진단</dd></div>
+                </dl>
+              </li>
+              <li class="stage-card reveal">
+                <span class="stage-tag">STEP 2</span>
+                <h3>Basic</h3>
+                <p class="stage-desc">생활 회화 표현과 함께 기초 문법을 자연스럽게 익히는 단계입니다.</p>
+                <dl class="stage-meta">
+                  <div><dt>학습 대상</dt><dd>초등 저 ~ 고학년</dd></div>
+                  <div><dt>학습 교재</dt><dd>Basic 1~3</dd></div>
+                  <div><dt>대상 시험</dt><dd>JET 5·6 / JET 3·4</dd></div>
+                </dl>
+              </li>
+              <li class="stage-card reveal">
+                <span class="stage-tag">STEP 3</span>
+                <h3>Master</h3>
+                <p class="stage-desc">독해 지문을 통해 중·고급 문법과 회화를 익히고 내신 유형까지 대비합니다.</p>
+                <dl class="stage-meta">
+                  <div><dt>학습 대상</dt><dd>초등 고학년 ~ 중등</dd></div>
+                  <div><dt>학습 교재</dt><dd>Master 1~3</dd></div>
+                  <div><dt>대상 시험</dt><dd>JET 1·2 / TOEIC Bridge</dd></div>
+                </dl>
+              </li>
+              <li class="stage-card reveal">
+                <span class="stage-tag">STEP 4</span>
+                <h3>Advanced</h3>
+                <p class="stage-desc">문법·독해·청해·작문을 통합 학습하며 특목·수능 영어를 준비합니다.</p>
+                <dl class="stage-meta">
+                  <div><dt>학습 대상</dt><dd>중등 ~ 고등</dd></div>
+                  <div><dt>학습 교재</dt><dd>Advanced iBT</dd></div>
+                  <div><dt>대상 시험</dt><dd>TOEIC</dd></div>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- 패널 3 : 영어 인증평가 ---------- -->
+      <div class="tab-panel" data-panel="evaluation" role="tabpanel" aria-labelledby="tab-evaluation" id="evaluation" hidden>
+        <div class="evaluation">
+          <div class="container">
+            <header class="section-head reveal">
+              <p class="section-lead">영어 실력 향상과<br /><strong class="on-yellow">영어 인증평가</strong>까지 함께</p>
+              <p class="section-desc">
+                아이블레스 커리큘럼은 공인 영어시험과 연계되어 단계별 교육 목표를 세우고,
+                객관적으로 실력을 검증합니다.
+              </p>
+            </header>
+
+            <!-- 테스트 로드맵 -->
+            <div class="roadmap reveal">
+              <h3 class="roadmap-title">빈틈없는 테스트 로드맵</h3>
+              <ul class="roadmap-track">
+                <li><span class="rm-stage">Phonics</span><p>유치원 ~ 초등 저학년</p><span class="rm-test">Junior 진단</span></li>
+                <li><span class="rm-stage">Basic</span><p>초등 저 ~ 고학년</p><span class="rm-test">JET 3~6</span></li>
+                <li><span class="rm-stage">Master</span><p>초등 고 ~ 중등</p><span class="rm-test">JET 1·2 / TOEIC Bridge</span></li>
+                <li><span class="rm-stage">Advanced</span><p>중등 ~ 고등</p><span class="rm-test">TOEIC / iBT</span></li>
+              </ul>
+            </div>
+
+            <!-- 리포트 샘플 -->
+            <div class="reports reveal">
+              <p class="reports-desc">
+                진단 리포트, 성적표, 수료증 등 객관적인 평가 결과를 제공하여 학생에게 필요한 학습을
+                정확히 진단하고 향후 학습 방향을 제시합니다.
+              </p>
+              <ul class="report-grid">
+                <li class="report-card"><span class="ph-doc"></span><h5>진단 리포트</h5><p>영역별 성취도 분석</p></li>
+                <li class="report-card"><span class="ph-doc"></span><h5>성적표</h5><p>공인 평가 결과 안내</p></li>
+                <li class="report-card"><span class="ph-doc"></span><h5>수료증</h5><p>단계 수료 인증</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= 마무리 CTA ============================= -->
+    <section class="cta-band" id="leveltest" aria-labelledby="cta-heading">
+      <div class="cta-bg" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span></div>
+      <div class="container cta-inner reveal">
+        <h2 id="cta-heading">우리 아이의 영어, 지금 진단해 보세요</h2>
+        <p>3분 무료 레벨테스트로 현재 실력과 꼭 맞는 학습 단계를 확인할 수 있습니다.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg" href="#leveltest-form">무료 레벨테스트 신청</a>
+          <a class="btn btn-outline-light btn-lg" href="#campus">가까운 캠퍼스 찾기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= 푸터 ============================= -->
+  <footer class="site-footer" id="campus">
+    <div class="container">
+      <ul class="footer-policy">
+        <li><a href="#terms">이용약관</a></li>
+        <li><a href="#privacy"><em>개인정보처리방침</em></a></li>
+        <li><a href="#campus">캠퍼스 찾기</a></li>
+        <li><a href="#franchise">가맹 안내</a></li>
+      </ul>
+
+      <div class="footer-info">
+        <div class="footer-brand">
+          <span class="brand-name footer-logo">iBless<em>아이블레스</em></span>
+        </div>
+        <ul class="footer-meta">
+          <li><span>상호 : 아이블레스</span><span>대표 : 김정용</span><span>사업자등록번호 : 477-29-02140</span></li>
+          <li><span>주소 : 인천광역시 연수구 신송로 122, 6층 614호(송도동, 송도프라자)</span><span>대표전화 : (전화번호 입력)</span></li>
+          <li class="copyright">Copyright © iBless. All rights reserved.</li>
+        </ul>
+        <button class="family-site" type="button" aria-haspopup="listbox" aria-expanded="false">
+          FAMILY SITE
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

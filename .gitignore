@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Playwright / 검증 산출물
+.playwright-mcp/
+*.log
+
+# 검증용 스크린샷
+ybm-*.png
+ybm-*.jpeg
+ibless-*.png
+ibless-*.jpeg
