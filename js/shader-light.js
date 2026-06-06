@@ -72,9 +72,11 @@ function initShader(container) {
   });
   scene.add(new THREE.Mesh(geometry, material));
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  // 모바일/터치(coarse pointer)에서는 DPR 1 + antialias off 로 GPU 부담 경감
+  const coarse = !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  const renderer = new THREE.WebGLRenderer({ antialias: !coarse, alpha: true });
   renderer.setClearColor(0x000000, 0);   // 투명 배경
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, coarse ? 1 : 1.5));
   container.appendChild(renderer.domElement);
 
   const resize = () => {
@@ -88,9 +90,13 @@ function initShader(container) {
 
   let running = false;
   let rafId = 0;
+  let frame = 0;
+  let inView = true;
   const animate = () => {
     rafId = requestAnimationFrame(animate);
-    uniforms.time.value += 0.05;
+    frame++;
+    if (frame % 2) return;          // ~30fps 스로틀 (느린 모션이라 충분)
+    uniforms.time.value += 0.1;     // 렌더 프레임이 절반이므로 속도 보정
     renderer.render(scene, camera);
   };
   const start = () => { if (!running) { running = true; animate(); } };
@@ -102,9 +108,19 @@ function initShader(container) {
     return;
   }
 
+  // 탭이 백그라운드면 정지 (CPU/배터리 절약)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else if (inView) start();
+  });
+
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
+      (entries) => entries.forEach((e) => {
+        inView = e.isIntersecting;
+        if (inView && !document.hidden) start();
+        else stop();
+      }),
       { threshold: 0 }
     );
     io.observe(container);
