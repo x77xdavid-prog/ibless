@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="수료증 예시">
+  <defs>
+    <style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;}</style>
+  </defs>
+  <rect width="320" height="180" rx="12" fill="#fffdf7"/>
+  <rect x="0.5" y="0.5" width="319" height="179" rx="12" fill="none" stroke="#ececec"/>
+  <rect x="10" y="10" width="300" height="160" rx="8" fill="none" stroke="#feca0a" stroke-width="2"/>
+  <rect x="15" y="15" width="290" height="150" rx="6" fill="none" stroke="#f1e2a6" stroke-width="0.8"/>
+
+  <rect x="258" y="22" width="44" height="17" rx="8.5" fill="#fff6cc" stroke="#e0ad00"/>
+  <text x="280" y="34" text-anchor="middle" font-size="9" font-weight="700" fill="#9a7600">예시</text>
+
+  <text x="160" y="52" text-anchor="middle" font-size="9" font-weight="700" letter-spacing="3" fill="#b89400">CERTIFICATE</text>
+  <text x="160" y="78" text-anchor="middle" font-size="22" font-weight="800" fill="#151515">수 료 증</text>
+
+  <text x="160" y="104" text-anchor="middle" font-size="10" fill="#6b6b6b">성명 :  ____________  님</text>
+  <text x="160" y="126" text-anchor="middle" font-size="10.5" fill="#151515">위 학생은 <tspan font-weight="700" fill="#ff7a00">STEP 2 · Basic</tspan> 과정을 수료하였기에</text>
+  <text x="160" y="142" text-anchor="middle" font-size="10.5" fill="#151515">이 증서를 수여합니다.</text>
+
+  <!-- seal -->
+  <circle cx="270" cy="148" r="16" fill="#ff7a00" opacity="0.12"/>
+  <circle cx="270" cy="148" r="16" fill="none" stroke="#ff7a00" stroke-width="1.2"/>
+  <text x="270" y="151" text-anchor="middle" font-size="8" font-weight="800" fill="#b25b00">iBless</text>
+
+  <text x="50" y="160" font-size="8.5" fill="#9a7600">아이블레스 · iBless</text>
+</svg>

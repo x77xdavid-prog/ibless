@@ -241,6 +241,9 @@
    ===================================================================== */
 .ph-note { color: var(--color-primary); font-style: italic; font-weight: 500; font-size: 0.85em; }
 
+/* 리포트 샘플 이미지(SVG 목업) */
+.report-thumb { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--color-line); margin-bottom: 1rem; background: #fff; }
+
 /* ---------- 후기 · 성과 ---------- */
 .reviews { padding: var(--space-section) 0; background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%); }
 .metric-row {

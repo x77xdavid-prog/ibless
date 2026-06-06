@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="성적표 예시">
+  <defs>
+    <style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;}</style>
+  </defs>
+  <rect width="320" height="180" rx="12" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="319" height="179" rx="12" fill="none" stroke="#ececec"/>
+  <rect x="0" y="0" width="320" height="6" rx="3" fill="#00b8e4"/>
+  <circle cx="24" cy="30" r="6" fill="#00b8e4"/>
+  <text x="36" y="34" font-size="13" font-weight="700" fill="#151515">성적표</text>
+  <text x="36" y="48" font-size="8.5" fill="#8a8a8a">공인 평가 결과 안내 · JET / TOEIC Bridge</text>
+  <rect x="262" y="18" width="44" height="17" rx="8.5" fill="#e7f8fd" stroke="#00b8e4"/>
+  <text x="284" y="30" text-anchor="middle" font-size="9" font-weight="700" fill="#0079a0">예시</text>
+
+  <!-- grade badge -->
+  <rect x="20" y="66" width="86" height="94" rx="10" fill="#f3fbfe" stroke="#cdeefb"/>
+  <text x="63" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#0079a0">종합 등급</text>
+  <text x="63" y="126" text-anchor="middle" font-size="30" font-weight="800" fill="#00b8e4">B+</text>
+  <text x="63" y="146" text-anchor="middle" font-size="9" fill="#6b6b6b">JET Lv.3</text>
+
+  <!-- table -->
+  <g>
+    <text x="122" y="76" font-size="9" font-weight="700" fill="#8a8a8a">영역</text>
+    <text x="298" y="76" text-anchor="end" font-size="9" font-weight="700" fill="#8a8a8a">점수</text>
+    <line x1="122" y1="82" x2="298" y2="82" stroke="#eee"/>
+    <text x="122" y="100" font-size="10" fill="#151515">Listening</text><text x="298" y="100" text-anchor="end" font-size="10" font-weight="700" fill="#151515">88</text>
+    <text x="122" y="120" font-size="10" fill="#151515">Reading</text><text x="298" y="120" text-anchor="end" font-size="10" font-weight="700" fill="#151515">80</text>
+    <text x="122" y="140" font-size="10" fill="#151515">Speaking</text><text x="298" y="140" text-anchor="end" font-size="10" font-weight="700" fill="#151515">72</text>
+    <text x="122" y="160" font-size="10" fill="#151515">Writing</text><text x="298" y="160" text-anchor="end" font-size="10" font-weight="700" fill="#151515">76</text>
+  </g>
+</svg>
