@@ -44,7 +44,10 @@
     .slide.dark .brand-row em { color: rgba(255,255,255,.6); }
 
     .cards { display: grid; gap: 1rem; margin-top: 1.5rem; }
-    .g2 { grid-template-columns: repeat(2,1fr); } .g3 { grid-template-columns: repeat(3,1fr); } .g4 { grid-template-columns: repeat(4,1fr); }
+    .g2 { grid-template-columns: repeat(2,1fr); } .g3 { grid-template-columns: repeat(3,1fr); } .g4 { grid-template-columns: repeat(4,1fr); } .g5 { grid-template-columns: repeat(5,1fr); }
+    .cards.compact .card { padding: 1rem; } .cards.compact .card h4 { font-size: .98rem; } .cards.compact .card p { font-size: .82rem !important; }
+    .course-cefr { display:inline-block; font-size:.72rem; font-weight:700; color:var(--color-sky-dark); margin:.15rem 0 .4rem; }
+    .slide.dark .course-cefr { color: var(--color-yellow); }
     .card { background: rgba(255,255,255,.7); border: 1px solid var(--color-line); border-radius: var(--radius); padding: 1.3rem; }
     .slide.dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); }
     .card h4 { font-size: 1.05rem; margin-bottom: .4rem; color: var(--color-ink); } .slide.dark .card h4 { color: #fff; }
@@ -77,7 +80,7 @@
     .controls button:hover { border-color: var(--color-primary); color: var(--color-primary); }
     .counter { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 20; font-size: .85rem; font-weight: 700; color: var(--color-muted); background: rgba(255,255,255,.7); padding: .35rem .7rem; border-radius: 999px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
     .hint { position: fixed; bottom: 1.6rem; left: 50%; transform: translateX(-50%); z-index: 20; font-size: .75rem; color: var(--color-muted); opacity: .8; }
-    @media (max-width: 700px) { .g2,.g3,.g4 { grid-template-columns: 1fr; } .hint { display: none; } }
+    @media (max-width: 700px) { .g2,.g3,.g4,.g5 { grid-template-columns: 1fr; } .hint { display: none; } }
     @media (prefers-reduced-motion: reduce) { .slide { transition: opacity .2s; transform: none; } }
   </style>
 </head>
@@ -204,6 +207,22 @@
           <div class="card"><span class="tag">STEP 4</span><h4>Advanced</h4><p>중등~고등 · TOEIC/iBT</p></div>
         </div>
         <p class="note">공인시험은 <b>성장 확인 도구</b> — 단계별 목표로 객관적 검증(GCT).</p>
+      </div>
+    </section>
+
+    <!-- 8.5 교육과정: 대상별 5과정 -->
+    <section class="slide dark">
+      <div class="slide-inner">
+        <p class="eyebrow">교육과정</p>
+        <h2>대상별 <span class="em">5과정</span>, 연구로 설계한 깊이</h2>
+        <div class="cards g5 compact">
+          <div class="card"><span class="tag">유아</span><h4>만 3~7세</h4><span class="course-cefr">Pre-A1 → A1</span><p>놀이·노래·TPR로 소리부터, 침묵기 존중<br><b>Phonics</b> · Junior 진단</p></div>
+          <div class="card"><span class="tag">초등</span><h4>초1~6</h4><span class="course-cefr">Pre-A1 → A2</span><p>듣기·말하기 → 체계적 파닉스·다독<br><b>Phonics·Basic</b> · JET 3~6</p></div>
+          <div class="card"><span class="tag">중등</span><h4>중1~3</h4><span class="course-cefr">A2 → B1</span><p>학업영어(CALP) 도약·과제+인출<br><b>Master</b> · JET 1·2/Bridge</p></div>
+          <div class="card"><span class="tag">고등</span><h4>고1~3</h4><span class="course-cefr">B1 → B2+</span><p>학문영어·비판적 읽기·에세이·시험<br><b>Advanced</b> · 수능/TOEIC/iBT</p></div>
+          <div class="card"><span class="tag">가족</span><h4>아동+학부모</h4><span class="course-cefr">Pre-A1 → A2</span><p>가정 루틴·대화식 읽기로 학습 확장<br><b>가정 연계</b> 블렌디드</p></div>
+        </div>
+        <p class="note" style="color:rgba(255,255,255,.62)">각 과정은 <b style="color:#fff">단계 · 예시 차시(레슨플랜) · 진단 · 교재 매핑</b>까지 설계 — Krashen·과학적 읽기·다독·인출/간격반복·SDT 근거. 경쟁사가 따라 하기 힘든 <b style="color:#fff">교육 설계의 해자</b>입니다.</p>
       </div>
     </section>
 

@@ -15,3 +15,11 @@ ybm-*.png
 ybm-*.jpeg
 ibless-*.png
 ibless-*.jpeg
+
+# Build tooling (keep make.js, ignore deps/artifacts)
+_pptx-build/node_modules/
+_pptx-build/package-lock.json
+_pptx-build/_verify.txt
+
+# 로컬 전용 (공개 리포 제외)
+사업아키텍처.md

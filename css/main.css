@@ -129,14 +129,16 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   color: var(--color-muted);
 }
 
-.gnb ul { display: flex; gap: clamp(0.5rem, 0.2rem + 1vw, 1.75rem); }
+.gnb ul { display: flex; gap: clamp(0.4rem, 0.1rem + 0.9vw, 1.4rem); }
 .gnb a {
   position: relative;
+  white-space: nowrap;
   font-weight: var(--weight-medium);
   color: var(--color-ink);
   padding: 0.5rem 0.25rem;
   transition: color var(--duration-fast);
 }
+.gnb a[aria-current="page"] { color: var(--color-primary); font-weight: var(--weight-bold); }
 .gnb a::after {
   content: "";
   position: absolute;
@@ -400,6 +402,32 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .stage-meta div { display: grid; grid-template-columns: 5rem 1fr; gap: 0.5rem; font-size: 0.84rem; }
 .stage-meta dt { color: var(--color-muted); font-weight: var(--weight-bold); }
 .stage-meta dd { color: var(--color-ink); font-weight: var(--weight-medium); }
+
+/* ---- 5과정 요약 카드 (커리큘럼 탭) — 대상별 과정으로 확장 ---- */
+.course-mini[data-c="youth"]  { --accent: #00b8e4; }
+.course-mini[data-c="elem"]   { --accent: #ff7a00; }
+.course-mini[data-c="middle"] { --accent: #6c5ce7; }
+.course-mini[data-c="high"]   { --accent: #12998a; }
+.course-mini[data-c="family"] { --accent: #ff5d8f; }
+.curriculum-intro { color: #fff; margin-bottom: 2rem; }
+.course-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; align-items: stretch; }
+.course-mini { display: flex; flex-direction: column; background: #fff; color: var(--color-body); border-radius: var(--radius-lg); padding: 1.6rem 1.35rem; border-top: 5px solid var(--accent); box-shadow: var(--shadow); transition: transform var(--duration) var(--ease-out-expo), box-shadow var(--duration); }
+.course-mini:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.course-mini .cm-no { font-family: var(--font-display); font-weight: 400; font-size: 0.92rem; color: var(--accent); letter-spacing: 0.08em; }
+.course-mini h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; color: var(--color-ink); margin: 0.2rem 0 0.1rem; }
+.course-mini .cm-target { font-size: 0.8rem; font-weight: var(--weight-bold); color: var(--color-muted); }
+.course-mini .cm-cefr { display: inline-block; align-self: flex-start; margin: 0.7rem 0; font-size: 0.74rem; font-weight: var(--weight-bold); color: #fff; background: var(--accent); padding: 0.3rem 0.7rem; border-radius: var(--radius-pill); }
+.course-mini .cm-line { font-size: 0.85rem; color: var(--color-body); line-height: 1.6; flex: 1; }
+.course-mini .cm-meta { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--bg-soft-2); display: grid; gap: 0.4rem; font-size: 0.78rem; }
+.course-mini .cm-meta div { display: grid; grid-template-columns: 3.4rem 1fr; gap: 0.4rem; }
+.course-mini .cm-meta dt { color: var(--color-muted); font-weight: var(--weight-bold); }
+.course-mini .cm-meta dd { color: var(--color-ink); font-weight: var(--weight-medium); }
+.course-mini .cm-link { margin-top: 1rem; font-weight: var(--weight-bold); font-size: 0.85rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; }
+.course-mini:hover .cm-link { gap: 0.6rem; }
+.curriculum-more { text-align: center; margin-top: 2.25rem; }
+@media (max-width: 1100px) { .course-cards { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px)  { .course-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .course-cards { grid-template-columns: 1fr; } }
 
 /* =====================================================================
    패널 3 : 영어 인증평가 (옐로)
