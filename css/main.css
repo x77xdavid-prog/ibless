@@ -430,6 +430,30 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 @media (max-width: 480px)  { .course-cards { grid-template-columns: 1fr; } }
 
 /* =====================================================================
+   왜 아이블레스 — 차별점 6가지 (스탯 밴드 다음)
+   ===================================================================== */
+.why { padding: var(--space-section) 0; background: linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.why-card { position: relative; background: #fff; border: 1px solid var(--color-line); border-radius: var(--radius-lg); padding: 1.9rem 1.6rem 1.7rem; box-shadow: var(--shadow-sm); transition: transform var(--duration) var(--ease-out-expo), box-shadow var(--duration); overflow: hidden; }
+.why-card::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 4px; background: var(--color-sky); transform: scaleX(0); transform-origin: left; transition: transform var(--duration) var(--ease-out-expo); }
+.why-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.why-card:hover::before { transform: scaleX(1); }
+.why-no { font-family: var(--font-display); font-weight: var(--weight-regular); font-size: 1.4rem; color: var(--color-sky-dark); }
+.why-card h3 { font-size: 1.2rem; color: var(--color-ink); margin: 0.35rem 0 0.5rem; }
+.why-card p { font-size: 0.92rem; color: var(--color-body); line-height: 1.65; }
+.why-card p a { color: var(--color-primary); font-weight: var(--weight-bold); white-space: nowrap; }
+.why-card p a:hover { text-decoration: underline; }
+/* 핵심 차별 2개 강조 */
+.why-card.why-key { border-color: color-mix(in oklab, var(--color-primary) 38%, #fff); background: linear-gradient(180deg, var(--color-primary-soft) 0%, #fff 72%); }
+.why-card.why-key::before { background: var(--color-primary); transform: scaleX(1); }
+.why-card.why-key .why-no { color: var(--color-primary); }
+.why-badge { position: absolute; top: 1.05rem; right: 1.1rem; font-size: 0.7rem; font-weight: var(--weight-bold); color: #fff; background: var(--color-primary); padding: 0.25rem 0.6rem; border-radius: var(--radius-pill); }
+.why-foot { text-align: center; margin-top: 2rem; font-size: 0.95rem; color: var(--color-muted); }
+.why-foot a { color: var(--color-primary); font-weight: var(--weight-bold); }
+@media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+
+/* =====================================================================
    패널 3 : 영어 인증평가 (옐로)
    ===================================================================== */
 .evaluation { background: linear-gradient(180deg, var(--color-yellow-soft) 0%, #fff 100%); padding: var(--space-section) 0; }

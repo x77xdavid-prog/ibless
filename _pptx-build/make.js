@@ -264,6 +264,21 @@ function brandRow(s, y, theme, center) {
   ], "light", 3.5);
 }
 
+/* ===================== 10.5 차별점: 왜 아이블레스인가 (NEW · 브랜드 비실명) ===================== */
+{ const s = slide("light");
+  eyebrow(s, "차별점", "light");
+  title(s, [{ t: "왜 " }, { t: "아이블레스", em: true }, { t: "인가 — 다른 점 6가지" }], "light");
+  cards(s, [
+    { h4: "① 실력에서 출발", p: [{ t: "학년 일괄 진도가 아니라 진단 기반 1:1 정밀 레벨링" }] },
+    { tag: "핵심", h4: "② 동기과학 설계", p: [{ t: "자기결정이론(SDT)으로 ‘스스로 하는’ 동기까지 설계" }] },
+    { tag: "핵심", h4: "③ 교육과정 공개", p: [{ t: "단계·차시·진단·교재 매핑을 투명하게 공개" }] },
+    { h4: "④ 4대 영역+공인시험", p: [{ t: "L·R·S·W 통합 + JET·TOEIC Bridge·TOEIC·iBT 로드맵" }] },
+    { h4: "⑤ 온·오프 블렌디드", p: [{ t: "오프라인 1:1 코칭 + 학습앱(복습 알림·리포트)" }] },
+    { h4: "⑥ 유아~고등+가족", p: [{ t: "5과정 일관 + 가정 연계로 한 흐름" }] },
+  ], { cols: 3, y: 2.45, h: 1.75, theme: "light" });
+  note(s, [{ t: "유행이 아니라 " }, { t: "검증된 연구", b: true, c: C.ink }, { t: " 위에 설계하고, 그 " }, { t: "근거를 공개", b: true, c: C.ink }, { t: "합니다 — Krashen·과학적 읽기·다독·인출/간격반복·SDT." }], "light");
+}
+
 /* ===================== 11. 가맹 강점 ===================== */
 { const s = slide("dark");
   eyebrow(s, "가맹 강점", "dark");
@@ -316,4 +331,4 @@ function brandRow(s, y, theme, center) {
   s.addText("문의 {전화 / 이메일} · 인천 송도 본사", { x: MX, y: 6.3, w: CW, h: 0.4, fontFace: FONT, fontSize: 11.5, color: "9A9AB0", align: "center" });
 }
 
-p.writeFile({ fileName: "../사업설명회.pptx" }).then(f => console.log("WROTE", f));
+p.writeFile({ fileName: process.env.OUT || "../사업설명회.pptx" }).then(f => console.log("WROTE", f));

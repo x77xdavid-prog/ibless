@@ -23,3 +23,10 @@ _pptx-build/_verify.txt
 
 # 로컬 전용 (공개 리포 제외)
 사업아키텍처.md
+
+# 경쟁 분석(내부 전략 — 공개 리포 제외)
+차별점.md
+_build/comp-*.json
+
+# Office 임시 잠금파일
+~$*
