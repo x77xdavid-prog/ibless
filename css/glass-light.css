@@ -1,0 +1,80 @@
+/* =====================================================================
+   아이블레스 — 라이트 글래스 히어로 (밝은 브랜드 톤)
+   밝은 파스텔 배경 + 브랜드 컬러 셰이더 광선 + 라이트 프로스티드 글래스.
+   텍스트는 기존 다크 잉크 유지(가독성). 본문은 그대로.
+   적용: <section class="hero glass-lite"> + <div id="heroShader" class="hero-shader">
+   ===================================================================== */
+
+/* ---------- 밝은 히어로 베이스 ---------- */
+.hero.glass-lite {
+  background:
+    radial-gradient(58% 60% at 82% 8%, var(--color-sky-soft) 0%, transparent 60%),
+    radial-gradient(64% 70% at 2% 100%, var(--color-yellow-soft) 0%, transparent 56%),
+    linear-gradient(180deg, var(--color-primary-soft) 0%, #ffffff 66%);
+  isolation: isolate;
+}
+.hero.glass-lite .hero-bg { display: none; }
+
+/* 셰이더(투명 알파)가 밝은 배경 위에 부드러운 광선으로 얹힘 */
+.hero-shader { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-shader canvas { display: block; }
+.hero.glass-lite .hero-shader { opacity: 0.85; filter: blur(0.5px); }
+
+/* 밝은 스크림 — 다크 텍스트가 광선 위에서도 또렷하게 */
+.hero.glass-lite::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(92% 78% at 12% 34%, rgba(255, 255, 255, 0.74) 0%, rgba(255, 255, 255, 0.26) 46%, rgba(255, 255, 255, 0) 72%);
+}
+.hero.glass-lite .hero-inner { position: relative; z-index: 2; }
+.hero.glass-lite .hero-copy h1 { text-shadow: 0 1px 12px rgba(255, 255, 255, 0.7); }
+
+/* eyebrow → 라이트 글래스 칩 (브랜드 주황 텍스트 유지) */
+.hero.glass-lite .eyebrow {
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  backdrop-filter: blur(8px) saturate(150%);
+}
+
+/* 고스트 버튼 → 라이트 글래스 */
+.hero.glass-lite .btn-ghost {
+  --btn-bg: rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  backdrop-filter: blur(8px) saturate(150%);
+}
+
+/* ---------- 학습 카드 → 라이트 프로스티드 글래스 ---------- */
+.hero.glass-lite .hero-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 22px 54px rgba(21, 21, 21, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(18px) saturate(165%);
+  backdrop-filter: blur(18px) saturate(165%);
+}
+
+/* ---------- backdrop-filter 미지원 폴백 ---------- */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .hero.glass-lite .hero-card { background: rgba(255, 255, 255, 0.92); }
+  .hero.glass-lite .eyebrow { background: rgba(255, 255, 255, 0.9); }
+  .hero.glass-lite .btn-ghost { --btn-bg: rgba(255, 255, 255, 0.9); }
+}
+
+/* ---------- 모션 최소화 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero.glass-lite .float-chip { animation: none; }
+}
+
+/* ---------- 본문 가벼운 글래스 터치: 스크롤 시 헤더 프로스트 강화 ---------- */
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+}

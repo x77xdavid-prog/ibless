@@ -12,6 +12,16 @@
 
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/glass-light.css" />
+
+  <!-- three.js — 빌드 없는 정적 사이트용 ES 모듈 importmap -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
 
   <!-- JS 활성 표시 (리빌 애니메이션 게이트, 깜빡임 방지) -->
   <script>document.documentElement.classList.add("js");</script>
@@ -70,7 +80,10 @@
     <span id="top"></span>
 
     <!-- ============================= 히어로 ============================= -->
-    <section class="hero" id="about" aria-labelledby="hero-heading">
+    <section class="hero glass-lite" id="about" aria-labelledby="hero-heading">
+      <!-- three.js 셰이더 배경 (브랜드 톤·투명) -->
+      <div class="hero-shader" id="heroShader" aria-hidden="true"></div>
+
       <div class="hero-bg" aria-hidden="true">
         <span class="blob blob-1"></span>
         <span class="blob blob-2"></span>
@@ -446,5 +459,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script type="module" src="js/shader-light.js"></script>
 </body>
 </html>
