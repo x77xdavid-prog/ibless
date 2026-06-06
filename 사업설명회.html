@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이블레스 가맹 사업설명회</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <style>
+    body { background: #0f1115; color: var(--color-ink); overflow: hidden; }
+    .deck { position: fixed; inset: 0; }
+    .slide {
+      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(2rem, 3vw, 5rem) clamp(1.5rem, 6vw, 8rem);
+      opacity: 0; visibility: hidden; transform: translateY(12px);
+      transition: opacity .45s var(--ease-out-expo), transform .45s var(--ease-out-expo), visibility .45s;
+      overflow-y: auto;
+    }
+    .slide.active { opacity: 1; visibility: visible; transform: none; }
+    .slide-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+
+    /* themes */
+    .slide.light { background: radial-gradient(60% 60% at 85% 8%, var(--color-sky-soft) 0%, transparent 55%), radial-gradient(60% 70% at 0% 100%, var(--color-yellow-soft) 0%, transparent 55%), linear-gradient(180deg, var(--color-primary-soft) 0%, #fff 60%); color: var(--color-ink); }
+    .slide.dark { background: radial-gradient(70% 70% at 80% 0%, #2a2350 0%, transparent 60%), linear-gradient(160deg, #14161d, #0d0f14); color: #fff; }
+    /* 제목이 슬라이드 색을 상속하도록 (tokens.css h1{color:ink} 덮어쓰기) */
+    .slide h1, .slide h2, .slide h3, .slide h4 { color: inherit; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 1rem; }
+    .slide.dark .eyebrow { color: var(--color-yellow); }
+    .slide h1 { font-size: clamp(2.2rem, 1.2rem + 4vw, 4.5rem); line-height: 1.08; letter-spacing: -.02em; }
+    .slide h2 { font-size: clamp(1.7rem, 1.1rem + 2.6vw, 3rem); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 1.5rem; }
+    .slide h2 .em { font-family: var(--font-display); font-weight: 400; color: var(--color-primary); }
+    .slide.dark h2 .em { color: var(--color-yellow); }
+    .slide p { font-size: clamp(1rem, .9rem + .5vw, 1.3rem); line-height: 1.7; color: var(--color-body); }
+    .slide.dark p { color: rgba(255,255,255,.82); }
+    .lead { font-size: clamp(1.1rem, .95rem + .7vw, 1.6rem) !important; }
+    .brand-row { display: flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-size: 1.5rem; }
+    .brand-row .b { color: var(--color-primary); } .slide.dark .brand-row .b { color: #fff; }
+    .brand-row em { font-style: normal; font-size: .75rem; color: var(--color-muted); font-family: var(--font-body); }
+    .slide.dark .brand-row em { color: rgba(255,255,255,.6); }
+
+    .cards { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .g2 { grid-template-columns: repeat(2,1fr); } .g3 { grid-template-columns: repeat(3,1fr); } .g4 { grid-template-columns: repeat(4,1fr); }
+    .card { background: rgba(255,255,255,.7); border: 1px solid var(--color-line); border-radius: var(--radius); padding: 1.3rem; }
+    .slide.dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); }
+    .card h4 { font-size: 1.05rem; margin-bottom: .4rem; color: var(--color-ink); } .slide.dark .card h4 { color: #fff; }
+    .card p { font-size: .92rem !important; margin: 0; }
+    .card .n { font-family: var(--font-display); color: var(--color-primary); font-size: 1.2rem; } .slide.dark .card .n { color: var(--color-yellow); }
+    .tag { display: inline-block; font-size: .72rem; font-weight: 700; color: #fff; background: var(--color-primary); padding: .25rem .6rem; border-radius: 999px; }
+
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1.5rem; }
+    .stat b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem,1.2rem+2vw,2.8rem); color: var(--color-primary); }
+    .slide.dark .stat b { color: var(--color-yellow); }
+    .stat span { font-size: .9rem; color: var(--color-muted); } .slide.dark .stat span { color: rgba(255,255,255,.7); }
+
+    .flow { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .flow li { display: flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.7); border: 1px solid var(--color-line); border-radius: 999px; padding: .55rem 1rem; font-weight: 700; font-size: .9rem; }
+    .slide.dark .flow li { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); color: #fff; }
+    .flow li b { color: var(--color-primary); } .slide.dark .flow li b { color: var(--color-yellow); }
+    .flow .arrow { background: none; border: none; color: var(--color-muted); padding: 0 .2rem; }
+
+    ul.bullets { margin-top: 1.2rem; display: grid; gap: .7rem; }
+    ul.bullets li { position: relative; padding-left: 1.8rem; font-size: clamp(1rem,.9rem+.4vw,1.2rem); line-height: 1.6; }
+    ul.bullets li::before { content: "✓"; position: absolute; left: 0; top: .05rem; width: 1.35rem; height: 1.35rem; display: grid; place-items: center; background: var(--color-primary); color: #fff; border-radius: 50%; font-size: .78rem; }
+    .slide.dark ul.bullets li::before { background: var(--color-yellow); color: #1a1a1a; }
+    .note { margin-top: 1.5rem; font-size: .85rem; color: var(--color-muted); }
+    .ph { color: var(--color-primary); font-weight: 700; } .slide.dark .ph { color: var(--color-yellow); }
+
+    /* chrome */
+    .progress { position: fixed; top: 0; left: 0; height: 4px; background: var(--color-primary); width: 0; z-index: 20; transition: width .35s var(--ease-out-expo); }
+    .controls { position: fixed; bottom: 1.1rem; right: 1.3rem; display: flex; align-items: center; gap: .6rem; z-index: 20; }
+    .controls button { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--color-line); background: rgba(255,255,255,.85); color: var(--color-ink); font-size: 1.2rem; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .controls button:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .counter { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 20; font-size: .85rem; font-weight: 700; color: var(--color-muted); background: rgba(255,255,255,.7); padding: .35rem .7rem; border-radius: 999px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .hint { position: fixed; bottom: 1.6rem; left: 50%; transform: translateX(-50%); z-index: 20; font-size: .75rem; color: var(--color-muted); opacity: .8; }
+    @media (max-width: 700px) { .g2,.g3,.g4 { grid-template-columns: 1fr; } .hint { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .slide { transition: opacity .2s; transform: none; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- 1 표지 -->
+    <section class="slide dark active">
+      <div class="slide-inner">
+        <div class="brand-row"><span class="b">iBless</span><em>아이블레스</em></div>
+        <p class="eyebrow" style="margin-top:2rem;">가맹 사업설명회 · Franchise Briefing</p>
+        <h1>스스로 자라는<br />영어 습관을 만드는<br /><span style="color:var(--color-yellow)">검증된 교육 시스템</span></h1>
+        <p class="lead" style="margin-top:1.5rem;">동기과학(자기결정이론)으로 설계한 아동 영어 교육 — 함께 시작하세요.</p>
+      </div>
+    </section>
+
+    <!-- 2 시장·기회 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">왜 지금인가</p>
+        <h2>흔들리지 않는 <span class="em">영어교육 수요</span></h2>
+        <p class="lead">학령인구는 줄어도, 학부모의 <b>1:1 맞춤·검증된 교육</b>에 대한 기대는 높아지고 있습니다. 차별화된 학습 시스템을 가진 브랜드가 살아남습니다.</p>
+        <div class="stat-row">
+          <div class="stat"><b>1:1</b><span>맞춤 학습 수요 증가</span></div>
+          <div class="stat"><b>4대 영역</b><span>통합 평가 니즈</span></div>
+          <div class="stat"><b>온·오프</b><span>블렌디드 전환</span></div>
+        </div>
+        <p class="note">※ 시장 규모·성장률 등 구체 수치는 <span class="ph">{공신력 출처로 보완}</span></p>
+      </div>
+    </section>
+
+    <!-- 3 문제 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">학부모의 고민</p>
+        <h2>학년이 같아도 <span class="em">실력은 다릅니다</span></h2>
+        <ul class="bullets">
+          <li>학년 일괄 진도 → 뒤처진 아이는 포기, 앞선 아이는 지루함</li>
+          <li>점수·등수 비교 → 영어가 싫어지는 아이들</li>
+          <li>"왜 배우는지" 모른 채 시키니 <b>스스로 하지 않음</b></li>
+        </ul>
+        <p class="lead" style="margin-top:1.5rem;">필요한 건 <b>실력에서 출발</b>하고 <b>스스로 하게 만드는</b> 설계입니다.</p>
+      </div>
+    </section>
+
+    <!-- 4 솔루션 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">솔루션</p>
+        <h2>아이블레스 = <span class="em">실력에서 출발하는 1:1 맞춤</span></h2>
+        <div class="cards g2">
+          <div class="card"><h4>정확한 레벨 진단</h4><p>세분화된 레벨에서 지금 실력의 위치를 과학적으로 측정</p></div>
+          <div class="card"><h4>1:1 맞춤 학습</h4><p>현재 실력에 꼭 맞는 교재·코칭으로 자신감부터</p></div>
+          <div class="card"><h4>4대 영역 통합</h4><p>듣기·읽기·말하기·쓰기를 균형 있게</p></div>
+          <div class="card"><h4>블렌디드 러닝</h4><p>오프라인 수업 + 온라인 복습·앱</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 차별점: SDT 지도 -->
+    <section class="slide dark">
+      <div class="slide-inner">
+        <p class="eyebrow">핵심 차별점</p>
+        <h2><span class="em">동기과학</span>으로 설계한 교육<br /><span style="font-size:.6em;color:rgba(255,255,255,.7)">자기결정이론(SDT) · 6개 미니이론 기반</span></h2>
+        <div class="cards g3">
+          <div class="card"><span class="n">CET</span><h4>인지평가이론</h4><p>점수 비교 대신 과정·전략 칭찬</p></div>
+          <div class="card"><span class="n">OIT</span><h4>유기적통합이론</h4><p>외적 보상→내적 동기로 내면화</p></div>
+          <div class="card"><span class="n">COT</span><h4>인과지향성이론</h4><p>선택권으로 자기주도 성향 강화</p></div>
+          <div class="card"><span class="n">BPNT</span><h4>기본심리욕구</h4><p>자율성·유능감·관계성 충족</p></div>
+          <div class="card"><span class="n">GCT</span><h4>목표내용이론</h4><p>"할 수 있게 되는" 내재적 목표</p></div>
+          <div class="card"><span class="n">RMT</span><h4>관계동기이론</h4><p>1:1 유대 + 또래 커뮤니티</p></div>
+        </div>
+        <p class="note" style="color:rgba(255,255,255,.6)">경쟁사가 따라 할 수 없는, <b style="color:#fff">이론에 근거한 교육 설계</b>가 브랜드의 해자입니다.</p>
+      </div>
+    </section>
+
+    <!-- 6 교육 프로그램: 3대 욕구 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">교육 프로그램</p>
+        <h2>아이를 <span class="em">스스로 움직이게</span> 하는 3가지</h2>
+        <div class="cards g3">
+          <div class="card"><span class="tag">자율성</span><h4>내가 선택해서 한다</h4><p>오늘의 목표 스스로 정하기, 학습 메뉴 선택권, 난이도 자기조절</p></div>
+          <div class="card"><span class="tag">유능감</span><h4>점점 잘하고 있어</h4><p>정밀 레벨링으로 잦은 성공, 약점 집중, 정보적 피드백 리포트</p></div>
+          <div class="card"><span class="tag">관계성</span><h4>연결되어 있어</h4><p>1:1 코칭 유대, 또래 챌린지, 학부모 알림</p></div>
+        </div>
+        <p class="note">포인트 보상은 <b>"성취 인정"</b>으로 설계 — 비교·등수 대신 내 성장 기록(CET·OIT).</p>
+      </div>
+    </section>
+
+    <!-- 7 학습 시스템 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">학습 시스템</p>
+        <h2>매일 굴러가는 <span class="em">하루 영어 습관</span></h2>
+        <ul class="flow">
+          <li><b>01</b> 목표 확인</li><li class="arrow">›</li>
+          <li><b>02</b> 자기주도 학습</li><li class="arrow">›</li>
+          <li><b>03</b> 1:1 코칭</li><li class="arrow">›</li>
+          <li><b>04</b> 약점 보충</li><li class="arrow">›</li>
+          <li><b>05</b> 점검·피드백</li><li class="arrow">›</li>
+          <li><b>06</b> 온라인 복습</li>
+        </ul>
+        <div class="cards g4" style="margin-top:1.5rem;">
+          <div class="card"><h4>정밀 레벨링</h4><p>딱 맞는 단계에서 출발</p></div>
+          <div class="card"><h4>4대 영역 통합</h4><p>L·R·S·W 균형</p></div>
+          <div class="card"><h4>학습 콘텐츠</h4><p>영상·이러닝·워크북·리딩</p></div>
+          <div class="card"><h4>학습 앱</h4><p>단어·복습 알림·리포트</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 커리큘럼 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">커리큘럼 · 평가</p>
+        <h2>유아부터 고등까지 <span class="em">단계별 로드맵</span></h2>
+        <div class="cards g4">
+          <div class="card"><span class="tag">STEP 1</span><h4>Phonics</h4><p>유치원~초등 저 · Junior 진단</p></div>
+          <div class="card"><span class="tag">STEP 2</span><h4>Basic</h4><p>초등 · JET 3~6</p></div>
+          <div class="card"><span class="tag">STEP 3</span><h4>Master</h4><p>초등 고~중등 · JET 1·2/TOEIC Bridge</p></div>
+          <div class="card"><span class="tag">STEP 4</span><h4>Advanced</h4><p>중등~고등 · TOEIC/iBT</p></div>
+        </div>
+        <p class="note">공인시험은 <b>성장 확인 도구</b> — 단계별 목표로 객관적 검증(GCT).</p>
+      </div>
+    </section>
+
+    <!-- 9 리텐션 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">동기 · 리텐션</p>
+        <h2>계속 다니게 하는 <span class="em">보상 설계</span></h2>
+        <p class="lead">iBless 포인트로 성취를 인정하고, 스토어에서 교환. 처음엔 외적 동기로 시작해 <b>"잘하고 싶은 마음"</b>으로 내면화되도록 설계합니다(OIT).</p>
+        <ul class="bullets">
+          <li>학습 앱 복습 알림 → 잊을 때쯤 다시</li>
+          <li>학부모 리포트·알림 → 가정의 신뢰·재등록</li>
+          <li>또래 챌린지 → 지속의 즐거움</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10 가맹 강점 -->
+    <section class="slide dark">
+      <div class="slide-inner">
+        <p class="eyebrow">가맹 강점</p>
+        <h2>검증된 시스템을 <span class="em">그대로</span></h2>
+        <div class="cards g4">
+          <div class="card"><span class="n">01</span><h4>검증된 커리큘럼</h4><p>레벨링·4대영역·공인시험 연계</p></div>
+          <div class="card"><span class="n">02</span><h4>교재·콘텐츠</h4><p>단계별 자체 개발 교재·앱</p></div>
+          <div class="card"><span class="n">03</span><h4>평가 시스템</h4><p>진단·리포트·수료 인증</p></div>
+          <div class="card"><span class="n">04</span><h4>운영 매뉴얼</h4><p>본사 직영 노하우 전수</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 가맹 지원 + 절차 -->
+    <section class="slide dark">
+      <div class="slide-inner">
+        <p class="eyebrow">가맹 지원 · 절차</p>
+        <h2>오픈부터 운영까지 <span class="em">함께</span></h2>
+        <div class="cards g4">
+          <div class="card"><h4>오픈 지원</h4><p>상권분석·인테리어 가이드</p></div>
+          <div class="card"><h4>강사 교육</h4><p>교수법·시스템 교육</p></div>
+          <div class="card"><h4>마케팅</h4><p>브랜드·지역 홍보 지원</p></div>
+          <div class="card"><h4>슈퍼바이징</h4><p>정기 운영 컨설팅</p></div>
+        </div>
+        <ul class="flow" style="margin-top:1.5rem;">
+          <li><b>01</b> 가맹 문의</li><li class="arrow">›</li>
+          <li><b>02</b> 상담·설명</li><li class="arrow">›</li>
+          <li><b>03</b> 상권 분석</li><li class="arrow">›</li>
+          <li><b>04</b> 계약</li><li class="arrow">›</li>
+          <li><b>05</b> 교육</li><li class="arrow">›</li>
+          <li><b>06</b> 오픈</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 12 수익 모델 -->
+    <section class="slide light">
+      <div class="slide-inner">
+        <p class="eyebrow">수익 모델</p>
+        <h2>안정적인 <span class="em">교육 사업</span></h2>
+        <div class="cards g3">
+          <div class="card"><h4>개설 비용</h4><p><span class="ph">{가맹비 / 교육비 / 인테리어 — 확정}</span></p></div>
+          <div class="card"><h4>월 수익 구조</h4><p><span class="ph">{수강료·정원·운영비 모델 — 확정}</span></p></div>
+          <div class="card"><h4>로열티·정책</h4><p><span class="ph">{로열티·계약 조건 — 확정}</span></p></div>
+        </div>
+        <p class="note">⚠️ 비용·수익 수치는 실제 사업 조건으로 채우고, 과장 없는 범위로 안내(가맹사업법 정보공개서 기준).</p>
+      </div>
+    </section>
+
+    <!-- 13 클로징 -->
+    <section class="slide dark">
+      <div class="slide-inner" style="text-align:center;">
+        <div class="brand-row" style="justify-content:center;"><span class="b" style="color:#fff">iBless</span><em>아이블레스</em></div>
+        <h2 style="margin-top:1.5rem;">검증된 교육으로,<br /><span class="em">함께 성장</span>하시겠어요?</h2>
+        <p class="lead" style="margin:1rem auto 0; max-width:34rem;">지금 가맹 상담을 신청하세요. 자세한 사업 안내를 드립니다.</p>
+        <div style="margin-top:2rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
+          <a href="index.html#leveltest-form" style="background:var(--color-primary);color:#fff;font-weight:700;padding:1rem 2rem;border-radius:999px;">가맹 문의하기</a>
+          <a href="index.html" style="border:1.5px solid rgba(255,255,255,.5);color:#fff;font-weight:700;padding:1rem 2rem;border-radius:999px;">홈페이지 보기</a>
+        </div>
+        <p class="note" style="color:rgba(255,255,255,.6); margin-top:2rem;">문의 <span class="ph">{전화 / 이메일}</span> · 인천 송도 본사</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="counter" id="counter">1 / 13</div>
+  <p class="hint">← → 또는 Space 로 이동</p>
+  <div class="controls">
+    <button id="prev" aria-label="이전 슬라이드">‹</button>
+    <button id="next" aria-label="다음 슬라이드">›</button>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var i = 0;
+    var counter = document.getElementById("counter");
+    var progress = document.getElementById("progress");
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, k) { s.classList.toggle("active", k === i); });
+      counter.textContent = (i + 1) + " / " + slides.length;
+      progress.style.width = ((i + 1) / slides.length * 100) + "%";
+    }
+    function next() { show(i + 1); }
+    function prev() { show(i - 1); }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+      else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+      else if (e.key === "Home") { show(0); }
+      else if (e.key === "End") { show(slides.length - 1); }
+    });
+    document.getElementById("next").addEventListener("click", next);
+    document.getElementById("prev").addEventListener("click", prev);
+    // 터치 스와이프
+    var x0 = null;
+    document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+      x0 = null;
+    }, { passive: true });
+    show(0);
+  })();
+  </script>
+</body>
+</html>
