@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상담 신청 내역 (관리) | 아이블레스</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .admin { max-width: 1100px; margin: 0 auto; padding: clamp(1.5rem,1rem+3vw,3.5rem) var(--space-4); }
+    .admin-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .admin-top a.home { font-weight: var(--weight-bold); color: var(--color-primary); }
+    .admin h1 { font-size: clamp(1.5rem,1.2rem+1.6vw,2.1rem); }
+    .admin .sub { color: var(--color-muted); font-size: 0.9rem; margin-top: 0.25rem; }
+    .note { background: var(--color-yellow-soft); border: 1px solid var(--color-line); border-radius: var(--radius); padding: 0.9rem 1.1rem; font-size: 0.88rem; color: var(--color-body); margin: 1.25rem 0; }
+    .bar { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+    .bar .count { font-weight: var(--weight-bold); color: var(--color-ink); margin-right: auto; }
+    .btn-s { font-size: 0.85rem; font-weight: var(--weight-bold); padding: 0.55rem 1rem; border-radius: var(--radius-pill); border: 1.5px solid var(--color-line); background: #fff; color: var(--color-ink); cursor: pointer; }
+    .btn-s.primary { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .btn-s.danger { color: #d8423a; border-color: #f3c4c0; }
+    .btn-s:hover { border-color: var(--color-primary); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+    th, td { border-bottom: 1px solid var(--color-line); padding: 0.7rem 0.8rem; text-align: left; vertical-align: top; }
+    th { background: var(--bg-soft); font-weight: var(--weight-bold); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    td.msg { max-width: 280px; white-space: pre-wrap; color: var(--color-body); }
+    .empty { text-align: center; color: var(--color-muted); padding: 3rem 1rem; }
+  </style>
+</head>
+<body>
+  <main class="admin">
+    <div class="admin-top">
+      <div>
+        <h1>상담 신청 내역</h1>
+        <p class="sub">무료 레벨테스트 · 상담 신청 (이 브라우저에 저장된 내역)</p>
+      </div>
+      <a class="home" href="index.html">← 홈으로</a>
+    </div>
+
+    <div class="note">
+      ⚠️ <strong>중요</strong>: 이 내역은 정적 사이트 특성상 <strong>이 브라우저(기기)의 localStorage</strong>에만 저장됩니다.
+      방문자가 신청한 내용은 방문자 기기에 저장되어 <strong>관리자 기기에서는 보이지 않습니다.</strong>
+      실제 상담 신청을 한곳에서 수집하려면 <strong>백엔드 연동(구글 시트 / Formspree / Supabase 등)</strong>이 필요합니다.
+      현재 페이지는 동작 확인·로컬 보관용입니다.
+    </div>
+
+    <div class="bar">
+      <span class="count" id="count">0건</span>
+      <button class="btn-s" id="refresh" type="button">새로고침</button>
+      <button class="btn-s primary" id="csv" type="button">CSV 내보내기</button>
+      <button class="btn-s" id="json" type="button">JSON 내보내기</button>
+      <button class="btn-s danger" id="clear" type="button">전체 삭제</button>
+    </div>
+
+    <div id="tableWrap"></div>
+  </main>
+
+  <script>
+  (function () {
+    "use strict";
+    var KEY = "ibless.submissions";
+    var GRADE_LABEL = "학년";
+
+    function load() {
+      try { return JSON.parse(localStorage.getItem(KEY) || "[]"); }
+      catch (e) { return []; }
+    }
+    function fmt(ts) {
+      if (!ts) return "";
+      var d = new Date(ts);
+      if (isNaN(d)) return ts;
+      var p = function (n) { return String(n).padStart(2, "0"); };
+      return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + " " + p(d.getHours()) + ":" + p(d.getMinutes());
+    }
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function render() {
+      var list = load().slice().reverse();
+      document.getElementById("count").textContent = list.length + "건";
+      var wrap = document.getElementById("tableWrap");
+      if (!list.length) {
+        wrap.innerHTML = '<p class="empty">저장된 신청 내역이 없습니다.<br>홈페이지에서 상담 신청을 제출하면 이 브라우저에 기록됩니다.</p>';
+        return;
+      }
+      var rows = list.map(function (s) {
+        return "<tr>" +
+          "<td>" + esc(fmt(s.ts)) + "</td>" +
+          "<td>" + esc(s.name) + "</td>" +
+          "<td>" + esc(s.grade) + "</td>" +
+          "<td>" + esc(s.phone) + "</td>" +
+          "<td>" + esc(s.campus) + "</td>" +
+          "<td>" + esc(s.time) + "</td>" +
+          "<td class='msg'>" + esc(s.message) + "</td>" +
+        "</tr>";
+      }).join("");
+      wrap.innerHTML = "<table><thead><tr>" +
+        "<th>신청일시</th><th>학생 이름</th><th>" + GRADE_LABEL + "</th><th>보호자 연락처</th><th>관심 캠퍼스</th><th>희망 시간대</th><th>문의 내용</th>" +
+        "</tr></thead><tbody>" + rows + "</tbody></table>";
+    }
+    function download(filename, text, type) {
+      var blob = new Blob([text], { type: type });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(a.href);
+    }
+    function toCsv(list) {
+      var head = ["신청일시", "학생이름", "학년", "보호자연락처", "관심캠퍼스", "희망시간대", "문의내용"];
+      var lines = [head.join(",")];
+      list.forEach(function (s) {
+        var row = [fmt(s.ts), s.name, s.grade, s.phone, s.campus, s.time, (s.message || "").replace(/\n/g, " ")]
+          .map(function (v) { return '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"'; });
+        lines.push(row.join(","));
+      });
+      return "﻿" + lines.join("\r\n"); // BOM for Excel(한글)
+    }
+
+    document.getElementById("refresh").addEventListener("click", render);
+    document.getElementById("csv").addEventListener("click", function () {
+      var list = load(); if (!list.length) return alert("내보낼 내역이 없습니다.");
+      download("상담신청내역.csv", toCsv(list), "text/csv;charset=utf-8;");
+    });
+    document.getElementById("json").addEventListener("click", function () {
+      var list = load(); if (!list.length) return alert("내보낼 내역이 없습니다.");
+      download("상담신청내역.json", JSON.stringify(list, null, 2), "application/json");
+    });
+    document.getElementById("clear").addEventListener("click", function () {
+      if (!load().length) return;
+      if (confirm("이 브라우저에 저장된 모든 신청 내역을 삭제할까요? (복구 불가)")) {
+        localStorage.removeItem(KEY); render();
+      }
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>

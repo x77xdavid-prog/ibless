@@ -59,7 +59,25 @@
       return;
     }
 
-    // TODO(백엔드): 여기서 Formspree/구글폼/CRM로 전송.
+    // 제출 저장 (localStorage) — 정적 사이트용 보관. 내역은 상담신청내역.html 에서 확인.
+    // ⚠️ localStorage 는 브라우저(기기)별로 분리됨 → 실제 리드 수집은 백엔드 연동 필요.
+    try {
+      const submission = {
+        name: name,
+        grade: grade,
+        phone: phone,
+        campus: (document.getElementById("f-campus") || {}).value || "",
+        time: (document.getElementById("f-time") || {}).value || "",
+        message: (document.getElementById("f-msg") || {}).value || "",
+        ts: new Date().toISOString(),
+      };
+      const KEY = "ibless.submissions";
+      const list = JSON.parse(localStorage.getItem(KEY) || "[]");
+      list.push(submission);
+      localStorage.setItem(KEY, JSON.stringify(list));
+    } catch (err) { /* localStorage 비활성 환경 무시 */ }
+
+    // TODO(백엔드): 여기서 Formspree/구글폼/CRM/구글시트로 전송.
     // 예) fetch("https://formspree.io/f/{ID}", { method:"POST", body: new FormData(form) })
     // inline style.display 로 숨김 (.signup-inner 의 display:grid 가 [hidden] 속성을 덮어쓰므로)
     const inner = form.closest(".signup-inner");

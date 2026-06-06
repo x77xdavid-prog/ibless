@@ -217,3 +217,111 @@
 
 @media (max-width: 1024px) { .signup-inner { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .signup-form { grid-template-columns: 1fr; } }
+
+/* =====================================================================
+   P1/P2 섹션 — 후기 · FAQ · 캠퍼스 · 가맹
+   ===================================================================== */
+.ph-note { color: var(--color-primary); font-style: italic; font-weight: 500; font-size: 0.85em; }
+
+/* ---------- 후기 · 성과 ---------- */
+.reviews { padding: var(--space-section) 0; background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%); }
+.metric-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.62); border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg); padding: clamp(1.25rem, 1rem + 2vw, 2rem); box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
+}
+.metric-row li { text-align: center; }
+.metric-row strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.7rem, 1.1rem + 2vw, 2.5rem); color: var(--color-primary); line-height: 1; }
+.metric-row .u { font-size: 0.5em; }
+.metric-row span { display: block; margin-top: 0.4rem; font-size: 0.84rem; color: var(--color-body); }
+.metric-row em { color: var(--color-muted); font-style: normal; font-size: 0.92em; }
+.metric-row li + li { border-left: 1px solid var(--color-line); }
+
+.review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.review-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 244, 234, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-lg); padding: 1.6rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 10px 30px rgba(21, 21, 21, 0.05);
+}
+.review-card .stars { color: #ffb15c; letter-spacing: 2px; font-size: 0.95rem; }
+.review-body { margin: 0.75rem 0 1.1rem; color: var(--color-ink); line-height: 1.7; font-size: 0.95rem; }
+.reviewer { display: flex; align-items: center; gap: 0.7rem; }
+.reviewer .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary-soft); color: var(--color-primary); display: grid; place-items: center; font-family: var(--font-display); flex: none; }
+.reviewer-meta b { display: block; font-size: 0.9rem; color: var(--color-ink); }
+.reviewer-meta em { font-style: normal; font-size: 0.8rem; color: var(--color-muted); }
+.reviews-note { margin-top: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--color-muted); }
+
+/* ---------- FAQ ---------- */
+.faq { padding: var(--space-section) 0; }
+.faq-inner { max-width: 820px; }
+.faq-list { display: grid; gap: 0.7rem; }
+.faq-item {
+  background: rgba(255, 255, 255, 0.7); border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden;
+  -webkit-backdrop-filter: blur(8px) saturate(140%); backdrop-filter: blur(8px) saturate(140%);
+}
+.faq-item summary { list-style: none; cursor: pointer; padding: 1.1rem 1.3rem; font-weight: var(--weight-bold); color: var(--color-ink); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-chev { color: var(--color-primary); font-size: 1.35rem; line-height: 1; transition: transform var(--duration-fast); flex: none; }
+.faq-item[open] .faq-chev { transform: rotate(45deg); }
+.faq-a { padding: 0 1.3rem 1.2rem; color: var(--color-body); line-height: 1.7; }
+.faq-a a, .faq-a b { color: var(--color-primary); font-weight: var(--weight-bold); }
+
+/* ---------- 캠퍼스 ---------- */
+.campus-sec { padding: var(--space-section) 0; background: linear-gradient(180deg, var(--color-sky-soft) 0%, #fff 70%); }
+.campus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.campus-card {
+  background: rgba(255, 255, 255, 0.62); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: var(--radius-lg); padding: 1.6rem;
+  box-shadow: 0 16px 40px rgba(0, 70, 100, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(14px) saturate(160%); backdrop-filter: blur(14px) saturate(160%);
+}
+.campus-tag { display: inline-block; font-size: 0.72rem; font-weight: var(--weight-bold); color: #fff; background: var(--color-primary); padding: 0.25rem 0.65rem; border-radius: var(--radius-pill); }
+.campus-tag.soon { background: var(--color-muted); }
+.campus-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; color: var(--color-ink); margin: 0.8rem 0; }
+.campus-meta { display: grid; gap: 0.6rem; margin-bottom: 1.2rem; }
+.campus-meta div { display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.5rem; font-size: 0.88rem; }
+.campus-meta dt { color: var(--color-muted); font-weight: var(--weight-bold); }
+.campus-meta dd { color: var(--color-ink); }
+.campus-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.campus-soon { display: flex; flex-direction: column; }
+.campus-soon-text { color: var(--color-body); font-size: 0.9rem; margin-top: 0.3rem; }
+.campus-note { margin-top: 1.5rem; text-align: center; color: var(--color-body); }
+.campus-note a { color: var(--color-primary); font-weight: var(--weight-bold); }
+
+/* ---------- 가맹 안내 (B2B · 다크) ---------- */
+.franchise { padding: var(--space-section) 0; background: var(--bg-ink); color: #fff; }
+.franchise .section-lead.light { color: #fff; }
+.franchise .section-desc.light { color: rgba(255, 255, 255, 0.8); }
+.franchise .on-orange { color: var(--color-yellow); font-family: var(--font-display); font-weight: 400; }
+.franchise-benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 3rem; }
+.fr-card {
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--radius-lg); padding: 1.6rem;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.fr-num { font-family: var(--font-display); font-size: 1.3rem; color: var(--color-yellow); }
+.fr-card h4 { color: #fff; margin: 0.6rem 0 0.4rem; font-size: 1.05rem; }
+.fr-card p { color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; }
+.franchise-steps { margin-bottom: 2.5rem; }
+.franchise-steps h3 { color: #fff; text-align: center; font-size: 1.3rem; margin-bottom: 1.5rem; }
+.fr-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.6rem; }
+.fr-steps li { position: relative; text-align: center; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius); padding: 1.1rem 0.6rem; font-size: 0.85rem; font-weight: var(--weight-bold); color: #fff; }
+.fr-steps li span { display: block; font-family: var(--font-display); color: var(--color-yellow); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.fr-steps li:not(:last-child)::after { content: "›"; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.4); z-index: 1; }
+.franchise-cta { text-align: center; }
+.franchise-cta p { color: rgba(255, 255, 255, 0.85); margin-bottom: 1.2rem; }
+.franchise-cta .ph-note { color: var(--color-yellow); }
+
+/* ---------- P1/P2 반응형 ---------- */
+@media (max-width: 1024px) {
+  .review-grid, .franchise-benefits, .campus-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .metric-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0; }
+  .metric-row li:nth-child(odd) { border-left: none; }
+  .fr-steps { grid-template-columns: repeat(3, 1fr); }
+  .fr-steps li:not(:last-child)::after { display: none; }
+}
+@media (max-width: 480px) {
+  .review-grid, .campus-grid, .franchise-benefits { grid-template-columns: 1fr; }
+  .fr-steps { grid-template-columns: repeat(2, 1fr); }
+}
