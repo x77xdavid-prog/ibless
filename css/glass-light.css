@@ -78,3 +78,68 @@
   -webkit-backdrop-filter: blur(16px) saturate(170%);
   backdrop-filter: blur(16px) saturate(170%);
 }
+
+/* =====================================================================
+   카드 섹션 글래스 터치
+   컬러 배경 위 카드를 프로스티드 글래스로. 텍스트는 다크 유지(반투명 화이트로 가독성).
+   작은 프로세스 칩(하루습관·콘텐츠·레벨플로우)은 솔리드 유지 → 위계 형성.
+   ===================================================================== */
+
+/* 컬러 배경(블루·오렌지·옐로) 위 주요 카드 = 프로스티드 글래스 */
+.curriculum .stage-card,
+.reward .reward-item,
+.evaluation .report-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 18px 44px rgba(21, 21, 21, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* 커리큘럼(블루) — stage 카드 */
+.curriculum .stage-card:hover {
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 26px 60px rgba(0, 70, 100, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.curriculum .stage-meta { border-top-color: rgba(21, 21, 21, 0.1); }
+
+/* 보상(오렌지) — reward 카드 */
+.reward .reward-item:hover { background: rgba(255, 255, 255, 0.74); }
+
+/* 인증평가(옐로) — report 카드 */
+.evaluation .report-card:hover { background: rgba(255, 255, 255, 0.72); }
+
+/* 특징 카드(흰 배경) — 은은한 글래스 그라데이션 + 광택(backdrop 불필요) */
+.programs .feature-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 244, 234, 0.72) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 30px rgba(21, 21, 21, 0.05);
+}
+.programs .feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 176, 92, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 18px 44px rgba(255, 122, 0, 0.16);
+}
+
+/* backdrop-filter 미지원 폴백: 불투명 흰 카드(가독성 우선) */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .curriculum .stage-card,
+  .reward .reward-item,
+  .evaluation .report-card { background: rgba(255, 255, 255, 0.92); }
+}
+
+/* 모바일: backdrop-filter 비용 절감(블러 약화) */
+@media (max-width: 768px) {
+  .curriculum .stage-card,
+  .reward .reward-item,
+  .evaluation .report-card {
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
+    backdrop-filter: blur(8px) saturate(150%);
+  }
+}
