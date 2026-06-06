@@ -148,4 +148,14 @@
       counters.forEach((c) => co.observe(c));
     }
   }
+
+  /* ---------- 해시(#) 진입 시 해당 탭 활성화 ---------- */
+  function activateTabFromHash() {
+    const id = (location.hash || "").replace("#", "");
+    if (!id) return;
+    const btn = document.querySelector('.tab-btn[data-tab="' + id + '"]');
+    if (btn && btn.getAttribute("aria-selected") !== "true") btn.click();
+  }
+  window.addEventListener("hashchange", activateTabFromHash);
+  activateTabFromHash();
 })();

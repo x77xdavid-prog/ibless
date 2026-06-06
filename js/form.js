@@ -85,7 +85,9 @@
     else form.hidden = true;
     if (success) {
       success.hidden = false;
+      success.setAttribute("tabindex", "-1");
       success.scrollIntoView({ behavior: "smooth", block: "center" });
+      success.focus({ preventScroll: true });
     }
   });
 })();

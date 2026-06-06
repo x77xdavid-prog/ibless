@@ -18,7 +18,7 @@
 /* 셰이더(투명 알파)가 밝은 배경 위에 부드러운 광선으로 얹힘 */
 .hero-shader { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .hero-shader canvas { display: block; }
-.hero.glass-lite .hero-shader { opacity: 0.85; filter: blur(0.5px); }
+.hero.glass-lite .hero-shader { opacity: 0.85; }
 
 /* 밝은 스크림 — 다크 텍스트가 광선 위에서도 또렷하게 */
 .hero.glass-lite::after {
@@ -134,14 +134,31 @@
   .evaluation .report-card { background: rgba(255, 255, 255, 0.92); }
 }
 
-/* 모바일: backdrop-filter 비용 절감(블러 약화) */
+/* 모바일: backdrop-filter 전면 해제 + 불투명 배경 (GPU/스크롤 성능) */
 @media (max-width: 768px) {
   .curriculum .stage-card,
   .reward .reward-item,
-  .evaluation .report-card {
-    -webkit-backdrop-filter: blur(8px) saturate(150%);
-    backdrop-filter: blur(8px) saturate(150%);
+  .evaluation .report-card,
+  .campus-card,
+  .fr-card,
+  .metric-row,
+  .signup-form,
+  .hero.glass-lite .hero-card,
+  .hero.glass-lite .eyebrow,
+  .hero.glass-lite .btn-ghost,
+  .site-header.is-scrolled {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
+  .curriculum .stage-card,
+  .reward .reward-item,
+  .evaluation .report-card,
+  .campus-card,
+  .metric-row,
+  .signup-form,
+  .hero.glass-lite .hero-card { background: rgba(255, 255, 255, 0.94); }
+  .fr-card { background: rgba(255, 255, 255, 0.12); }
+  .site-header.is-scrolled { background: rgba(255, 255, 255, 0.96); }
 }
 
 /* =====================================================================
@@ -191,6 +208,7 @@
   transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
 }
 .signup-form textarea { resize: vertical; }
+.signup-form ::placeholder { color: #6b6b6b; opacity: 1; }
 .signup-form input:focus,
 .signup-form select:focus,
 .signup-form textarea:focus {
@@ -244,7 +262,8 @@
   border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-lg); padding: 1.6rem;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 10px 30px rgba(21, 21, 21, 0.05);
 }
-.review-card .stars { color: #ffb15c; letter-spacing: 2px; font-size: 0.95rem; }
+.review-card .stars { color: #e0892a; letter-spacing: 2px; font-size: 0.95rem; }
+.sample-flag { text-align: center; font-size: 0.85rem; font-weight: var(--weight-bold); color: #b25b00; background: var(--color-primary-soft); border: 1px dashed var(--color-primary); border-radius: var(--radius-pill); padding: 0.5rem 1rem; width: fit-content; margin: 0 auto 1.25rem; }
 .review-body { margin: 0.75rem 0 1.1rem; color: var(--color-ink); line-height: 1.7; font-size: 0.95rem; }
 .reviewer { display: flex; align-items: center; gap: 0.7rem; }
 .reviewer .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary-soft); color: var(--color-primary); display: grid; place-items: center; font-family: var(--font-display); flex: none; }
@@ -257,8 +276,7 @@
 .faq-inner { max-width: 820px; }
 .faq-list { display: grid; gap: 0.7rem; }
 .faq-item {
-  background: rgba(255, 255, 255, 0.7); border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden;
-  -webkit-backdrop-filter: blur(8px) saturate(140%); backdrop-filter: blur(8px) saturate(140%);
+  background: #fff; border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden;
 }
 .faq-item summary { list-style: none; cursor: pointer; padding: 1.1rem 1.3rem; font-weight: var(--weight-bold); color: var(--color-ink); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .faq-item summary::-webkit-details-marker { display: none; }
