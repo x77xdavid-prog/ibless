@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>준비 중 | 아이블레스</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .soon {
+      min-height: 100vh; display: grid; place-items: center; text-align: center;
+      padding: var(--space-8) var(--space-4);
+      background: radial-gradient(60% 60% at 80% 10%, var(--color-sky-soft) 0%, transparent 60%),
+                  radial-gradient(64% 70% at 2% 100%, var(--color-yellow-soft) 0%, transparent 56%),
+                  linear-gradient(180deg, var(--color-primary-soft) 0%, #fff 70%);
+    }
+    .soon-inner { max-width: 30rem; }
+    .soon .brand-name { font-size: 1.4rem; justify-content: center; margin-bottom: 2rem; }
+    .soon .mark {
+      width: 76px; height: 76px; border-radius: 24px; margin: 0 auto 1.5rem;
+      display: grid; place-items: center; background: var(--color-primary); color: #fff;
+      box-shadow: var(--shadow-color);
+    }
+    .soon .mark svg { width: 38px; height: 38px; }
+    .soon h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); margin-bottom: 0.75rem; }
+    .soon p { color: var(--color-body); font-size: var(--text-lead); margin-bottom: 2rem; }
+    .soon-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <main class="soon">
+    <div class="soon-inner">
+      <span class="brand-name">iBless<em>아이블레스</em></span>
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <h1>준비 중인 서비스입니다</h1>
+      <p>더 좋은 학습 경험으로 곧 찾아뵙겠습니다.<br />지금은 무료 레벨테스트로 먼저 시작해 보세요.</p>
+      <div class="soon-actions">
+        <a class="btn btn-primary btn-lg" href="index.html#leveltest-form">무료 레벨테스트 신청</a>
+        <a class="btn btn-ghost btn-lg" href="index.html">← 홈으로</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

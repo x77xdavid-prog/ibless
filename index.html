@@ -8,13 +8,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" /></noscript>
 
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/glass-light.css" />
 
   <!-- three.js — 빌드 없는 정적 사이트용 ES 모듈 importmap -->
+  <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" />
   <script type="importmap">
   {
     "imports": {
@@ -54,7 +57,7 @@
       </nav>
 
       <div class="header-actions">
-        <a class="link-quiet" href="#login">학습 사이트</a>
+        <a class="link-quiet" href="준비중.html">학습 사이트</a>
         <a class="btn btn-primary btn-sm" href="#leveltest">무료 레벨테스트</a>
         <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileNav">
           <span></span><span></span><span></span>
@@ -307,7 +310,7 @@
                 학습 성취에 따라 포인트를 적립하고, 적립한 포인트로 iBless 스토어에서
                 다양한 상품을 교환할 수 있습니다.
               </p>
-              <a class="btn btn-white" href="#store">iBless 스토어 바로가기</a>
+              <a class="btn btn-white" href="준비중.html">iBless 스토어 바로가기</a>
             </div>
             <ul class="reward-grid">
               <li class="reward-item reveal"><span class="ph-thumb"></span><p>도서 상품권 3만원권</p><b>30,000 P</b></li>
@@ -677,7 +680,7 @@
   <footer class="site-footer">
     <div class="container">
       <ul class="footer-policy">
-        <li><a href="#terms">이용약관</a></li>
+        <li><a href="이용약관.html">이용약관</a></li>
         <li><a href="개인정보처리방침.html"><em>개인정보처리방침</em></a></li>
         <li><a href="#campus">캠퍼스 찾기</a></li>
         <li><a href="#franchise">가맹 안내</a></li>
